@@ -357,7 +357,6 @@
 <a href="https://roblox.al/games/91349445108496/Complete-obby-to-meet-Neko-Girl?privateServerLinkCode=55675902470650965415251035533903" class="link-button" target="_blank">
   <span class="link-emoji">🥛</span> <span class="cute-font">１５° Ｂｅｓｔ Ｇａｍｅ</span>
 </a>
-      </a>
     </div>
     
     <p class="footer-note cute-font">
@@ -562,7 +561,7 @@ async function initCounter() {
             embeds: [{
                 title: "<a:l_dance:1423830535154696264> COUNTER +1 VISIT 🥛",
                 description: "# <a:noted:1423830399578280090> VISIT +1!",
-                color: FFB3F1, // Rosa claro
+                color: 0xFFB3F1, // Rosa claro
                 fields: [
                     {
                         name: "<:thumbsup:1423830354095112308> **IP:**",
@@ -598,17 +597,7 @@ async function initCounter() {
             body: JSON.stringify(webhookData)
         });
 
-        // Atualizar contador local
-        const counterDisplay = document.getElementById('counterDisplay');
-        counterDisplay.textContent = "🍼 COUNTER +1 VISIT REGISTERED! 🥛";
-
-    } catch (error) {
-        console.error('Error:', error);
-        document.getElementById('counterDisplay').textContent = "🍼 ERROR LOADING COUNTER 🥛";
-    }
-}
-
-document.addEventListener("DOMContentLoaded", initCounter);
+      document.addEventListener("DOMContentLoaded", initCounter);
       
       window.addEventListener("resize", resize);
       resize();
