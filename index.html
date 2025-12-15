@@ -166,6 +166,147 @@
       font-size: 20px;
     }
     
+    /* Botão More Games */
+    .more-games-container {
+      text-align: right;
+      margin-bottom: 20px;
+      position: relative;
+    }
+    
+    .more-games-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      background: linear-gradient(145deg, #ff9cda 0%, #ff70b8 100%);
+      color: white;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      font-family: 'Comic Sans MS', cursive;
+      font-size: 14px;
+      box-shadow: 0 4px 0 rgba(179, 71, 127, 0.5);
+      transition: all 0.3s ease;
+    }
+    
+    .more-games-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 0 rgba(179, 71, 127, 0.5);
+    }
+    
+    /* Modal More Games */
+    .more-games-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .more-games-content {
+      background: linear-gradient(135deg, #ff9cda 0%, #ff479f 100%);
+      width: 90%;
+      max-width: 400px;
+      border-radius: 25px;
+      padding: 30px;
+      text-align: center;
+      position: relative;
+      border: 5px solid white;
+      box-shadow: 0 0 30px rgba(255, 156, 218, 0.8);
+    }
+    
+    .modal-decoration {
+      position: absolute;
+      font-size: 24px;
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .decoration-top-left {
+      top: 10px;
+      left: 10px;
+    }
+    
+    .decoration-top-right {
+      top: 10px;
+      right: 10px;
+      animation-delay: 0.5s;
+    }
+    
+    .decoration-bottom-left {
+      bottom: 10px;
+      left: 10px;
+      animation-delay: 1s;
+    }
+    
+    .decoration-bottom-right {
+      bottom: 10px;
+      right: 10px;
+      animation-delay: 1.5s;
+    }
+    
+    .modal-title {
+      font-size: 22px;
+      color: white;
+      margin-bottom: 15px;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+    
+    .modal-text {
+      color: white;
+      margin-bottom: 25px;
+      font-size: 16px;
+      line-height: 1.5;
+      text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+    }
+    
+    .enter-group-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 30px;
+      background: white;
+      color: #ff479f;
+      text-decoration: none;
+      border-radius: 50px;
+      font-weight: bold;
+      font-size: 16px;
+      border: 3px solid #ff70b8;
+      transition: all 0.3s ease;
+    }
+    
+    .enter-group-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 5px 15px rgba(255, 71, 159, 0.4);
+    }
+    
+    .close-modal {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 24px;
+      cursor: pointer;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      transition: background 0.3s ease;
+    }
+    
+    .close-modal:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+    
     /* Footer */
     .footer-note {
       text-align: center;
@@ -198,6 +339,17 @@
       50% { opacity: 0.5; }
     }
     
+    @keyframes modalFadeIn {
+      from {
+        opacity: 0;
+        transform: scale(0.8);
+      }
+      to {
+        opacity: 1;
+        transform: scale(1);
+      }
+    }
+    
     /* Elementos decorativos de fundo */
     .bg-decoration {
       position: fixed;
@@ -221,6 +373,11 @@
       .link-button {
         padding: 12px 18px;
         font-size: 14px;
+      }
+      
+      .more-games-content {
+        width: 95%;
+        padding: 20px;
       }
     }
     
@@ -283,6 +440,13 @@
   <div class="bg-decoration" style="top: 85%; left: 12%; animation-delay: 0.5s;">✨</div>
   
   <div class="kawaii-container">
+    <!-- Botão More Games (Superior Direito) -->
+    <div class="more-games-container">
+      <button class="more-games-btn" onclick="openMoreGames()">
+        <span>🎮</span> MORE GAMES
+      </button>
+    </div>
+    
     <div class="header">
       <div class="profile-container">
         <img src="https://cdn.discordapp.com/avatars/1352668844518412338/df26277751c0a7d7a3b55a618e054b1d.png?size=2048" alt="Foto de Perfil" class="profile-pic" />
@@ -363,6 +527,34 @@
       ＋１５ Ｇａｍｅｓ<br>
       ＭＯＲＥ ＧＡＭＥＳ ＣＯＭＩＮＧ ＳＯＯＮ
     </p>
+  </div>
+
+  <!-- Modal More Games -->
+  <div id="moreGamesModal" class="more-games-modal">
+    <div class="more-games-content" style="animation: modalFadeIn 0.3s ease-out;">
+      <button class="close-modal" onclick="closeMoreGames()">×</button>
+      
+      <div class="modal-decoration decoration-top-left">🌸</div>
+      <div class="modal-decoration decoration-top-right">✨</div>
+      <div class="modal-decoration decoration-bottom-left">⭐</div>
+      <div class="modal-decoration decoration-bottom-right">🍥</div>
+      
+      <h2 class="modal-title">🔓 Unlock +10 Exclusive Games! 🎮</h2>
+      
+      <p class="modal-text">
+        Join our official Roblox group to access<br>
+        <strong>+10 special games</strong> that aren't available anywhere else!<br><br>
+        💖 Exclusive content<br>
+        🎉 Private game servers<br>
+        🌸 Early access to new games
+      </p>
+      
+      <a href="https://www.roblox.com/groups/YOUR_GROUP_LINK_HERE" 
+         class="enter-group-btn" 
+         target="_blank">
+        <span>🎯</span> ENTER GROUP
+      </a>
+    </div>
   </div>
 
   <script>
@@ -449,6 +641,26 @@
       createSnowflakes();
       requestAnimationFrame(animateSnow);
     })();
+
+    // Funções para o modal More Games
+    function openMoreGames() {
+      const modal = document.getElementById('moreGamesModal');
+      modal.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // Previne scroll
+    }
+
+    function closeMoreGames() {
+      const modal = document.getElementById('moreGamesModal');
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restaura scroll
+    }
+
+    // Fechar modal ao clicar fora
+    document.getElementById('moreGamesModal').addEventListener('click', function(e) {
+      if (e.target === this) {
+        closeMoreGames();
+      }
+    });
 
     // Função para detectar dispositivo
     function detectDevice() {
@@ -571,4 +783,4 @@
     });
   </script>
 </body>
-</html>
+  </html>
